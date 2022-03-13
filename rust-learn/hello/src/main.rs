@@ -176,4 +176,58 @@ fn main() {
 
     //way -4
     // println!("{}", divideRes.unwrap_or(100));
+
+    // ------------------------------------------------------
+    #[allow(unused_variables, unused_mut)]
+    //define an array of size 4
+    let arr: [i32; 4] = [1, 2, 3, 4];
+    // initialize an array of size 4 with 0
+    let arr1 = [0; 4];
+
+    // ------------------------------------------------------
+    // TUPLE:
+    #[allow(unused_variables, unused_mut)]
+    //define a tuple
+    let person_data = ("Alex", 48, "35kg", "6ft");
+    // define a tuple with type annotated
+    let person_data: (&str, i32, &str, &str) = ("Alex", 48, "35kg", "6ft");
+
+    let person_data = ("Alex", 48, "35kg", "6ft");
+    let (w, x, y, z) = person_data;
+
+    //define a tuple
+    let person_data = ("Alex", 48, "35kg", "6ft");
+    // access value of a tuple
+    println!(
+        "The value of the tuple at index 0 and index 1 are {} {}",
+        person_data.0, person_data.1
+    );
+
+    //define a tuple
+    let person_data = ("Alex", 48, "35kg", "6ft");
+    println!("Name : {}", person_data.0);
+    // get individual values out of tuple
+    let (w, x, y, z) = person_data;
+    //print values
+    println!("Name : {}", w);
+    println!("Age : {}", x);
+    println!("Weight : {}", y);
+    println!("Height : {}", z);
+    // ------------------------------------------------------
+
+    //     Difference Between const and let Variables#
+    // There are many differences between const and let variables.
+
+    // Declaration#
+    // Constant variables are declared using the const keyword unlike let variables.
+    // Scope#
+    // const variables are declared in global and local scope unlike let variables that are declared only in the local scope.
+    // Mutability#
+    // const variable cannot be mutable unlike let which can be made mutable using mut keyword.
+    // Data Type#
+    // Unlike let variables, it is mandatory to define the data type of const variables.
+    // Set Value at Run-time#
+    // The value of const variable can only be set before running the program whereas the let variable can store the result at runtime.
+    // Shadowing#
+    // Unlike let variables, const variables cannot be shadowed.
 }

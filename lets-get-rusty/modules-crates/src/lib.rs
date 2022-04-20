@@ -1,16 +1,35 @@
-mod front_of_house {
-    pub mod hosting {
-        pub fn add_to_waitlist() {}
-    }
-}
+// mod front_of_house {
+//     pub mod hosting {
+//         pub fn add_to_waitlist() {}
+//     }
+// }
+
+// pub fn eat_at_restaurant() {
+//     // Absolute path
+//     crate::front_of_house::hosting::add_to_waitlist();
+
+//     // Relative path
+//     front_of_house::hosting::add_to_waitlist();
+// }
+
+//----A-START---------above code works fine, below code is demo to separate above code into modules, and load from them--------//
+
+
+// Using a semicolon after mod front_of_house rather than using a block tells Rust to load 
+//the contents of the module from another file with the same name as the module.
+mod front_of_house; //loads front_of_house.rs 1 (check front_of_hosue.rs for 2)
+
+pub use crate::front_of_house::hosting;
 
 pub fn eat_at_restaurant() {
-    // Absolute path
-    crate::front_of_house::hosting::add_to_waitlist();
-
-    // Relative path
-    front_of_house::hosting::add_to_waitlist();
+    hosting::add_to_waitlist();
+    hosting::add_to_waitlist();
+    hosting::add_to_waitlist();
 }
+
+
+//------A-END--till here module separation goes-------------//
+
 //-----------------------------------Starting Relative Paths with super-----------------------------//
 //The fix_incorrect_order function is in the back_of_house module, so we can use super
 //to go to the parent module of back_of_house, which in this case is crate, the root.
@@ -76,18 +95,18 @@ pub fn eat_at_restaurant2() {
 
 //--------------------------Bringing Paths into Scope with the use Keyword-----------------------//
 mod front_of_house_a {
-    pub mod hosting {
+    pub mod hosting_a {
         pub fn add_to_waitlist() {}
     }
 }
 
-use crate::front_of_house_a::hosting;
+use crate::front_of_house_a::hosting_a;
 //or replace above line with
 //use self::front_of_house::hosting;
 pub fn eat_at_restaurant_a() {
-    hosting::add_to_waitlist();
-    hosting::add_to_waitlist();
-    hosting::add_to_waitlist();
+    hosting_a::add_to_waitlist();
+    hosting_a::add_to_waitlist();
+    hosting_a::add_to_waitlist();
 }
 
 //--------------------------Creating Idiomatic use Paths-----------------------//
@@ -109,7 +128,7 @@ pub fn eat_at_restaurant_b() {
 
 //--------------------------Creating correct Paths-----------------------//
 use std::fmt;
-// use std::io;
+use std::io;
 
 
 //or
@@ -150,16 +169,16 @@ pub fn eat_at_restaurant_c() {
 
 //--------TIPS--------//
 
-use std::cmp::Ordering;
-use std::io;
+// use std::cmp::Ordering;
+// use std::io;
 //or
 //use std::{cmp::Ordering, io};
 
 //--
-use std::io;
-use std::io::Write;
+// use std::io;
+// use std::io::Write;
 //or
-use std::io::{self, Write};
+// use std::io::{self, Write};
 
 //--
-use std::collections::*;
+// use std::collections::*;

@@ -59,8 +59,30 @@ fn main() {
         println!("Index : {}", i);
     }
 
+    // accessing vec element two ways : by index, and get method
+    let v11 = vec![1, 2, 3, 4, 5];
+    let does_not_exist = &v[100]; // code will panic and crashes
+    let does_not_exist = v.get(100); // returns an option, err can be handled in None Case
+
+    //following code wont work
+    let mut v9 = vec![1, 2, 3, 4, 5];
+    let first = &v[0];
+    v9.push(6);
+    println!("The first element is: {}", first); // at this line first might be moved to new memory location
+
     //vectors only store one type of data, what if we want vec to store diff types of data ?
     // solution -> store enums inside vec
+    enum SpreadsheetCell {
+        Int(i32),
+        Float(f64),
+        Text(String),
+    }
+    // now row vec can store value of type int, float, text
+    let row = vec![
+        SpreadsheetCell::Int(3),
+        SpreadsheetCell::Text(String::from("blue")),
+        SpreadsheetCell::Float(10.12),
+    ];
 
     // strings are store as a collection of UTF-8 encoded bytes
     let s1 = String::new();
@@ -143,27 +165,25 @@ fn main() {
     let mut fruits: HashMap<String, i32> = HashMap::new();
 
     fruits.insert(String::from("apple"), 10);
-    fruits.insert(String::from("apple"), 20);//overrides above banana
+    fruits.insert(String::from("apple"), 20); //overrides above banana
 
     //to update if there is not entry
     fruits.entry(String::from("banana")).or_insert(10);
-    fruits.entry(String::from("banana")).or_insert(20);// at this line banana is there so, this line will not update banana
+    fruits.entry(String::from("banana")).or_insert(20); // at this line banana is there so, this line will not update banana
 
     for (key, value) in &fruits {
         println!("Fruit : {} and Quantity : {}", key, value);
     }
 
-
     //example
     // count how many times a word appears in a string and update the count as value and word as key in hashmap
 
-
     let text = "hello world wonderful world";
 
-    let mut map:HashMap<&str, i32> = HashMap::new();
+    let mut map: HashMap<&str, i32> = HashMap::new();
 
     for word in text.split_whitespace() {
-        let count  = map.entry(word).or_insert(0);
+        let count = map.entry(word).or_insert(0);
         *count += 1
     }
 

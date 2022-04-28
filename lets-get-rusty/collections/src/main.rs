@@ -187,5 +187,5 @@ fn main() {
         *count += 1
     }
 
-    println!("{:?}", map)
+    println!("{:?}", map);
 }

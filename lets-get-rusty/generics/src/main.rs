@@ -36,3 +36,48 @@ fn get_largest<T : PartialOrd + Copy>(num_list : Vec<T>) -> T {
     largest
 }
 
+
+
+mod generics_in_structs_and_structs {
+    // x and y are of same type T
+    struct Point<T> {
+        x : T,
+        y : T
+    }
+
+    struct Point2<T, U>{
+        x : T,
+        y : U
+    }
+
+
+    fn test(){
+        let x1 = Point { x : 4, y : 5};
+        // x2 will not be possible if struct is : 
+        #[allow(unused_doc_comments)]
+        /**
+         * struct Point {
+         *      x : i32,
+         *      y : i32
+         * }
+         */
+        // with Point being of generic type we can have any type of point
+        let x2 = Point { x : 10.9, y : 8.9};
+
+
+        let x3 = Point2 { x : 32, y : 5.9};
+    }
+
+
+    // generics in enums
+    enum Option<T>{
+        Some(T),
+        None
+    }
+
+    enum Result<T, E>{
+        Ok(T),
+        Err(E)
+    }
+}
+

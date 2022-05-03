@@ -26,6 +26,7 @@ pub fn eat_at_restaurant() {
     hosting::add_to_waitlist();
     hosting::add_to_waitlist();
 }
+pub fn check () {}
 
 
 //------A-END--till here module separation goes-------------//

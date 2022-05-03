@@ -14,7 +14,7 @@ fn main() {
     //create and initialize vec with values -> vec macro
     {
         let v2 = vec![1, 2, 3];
-    } //scope of v2 will dropped here -> heap
+    } //scope of v2 will d ropped here -> heap
 
     let mut v3 = vec![1, 2, 3, 4];
     let third = &v3[3];
@@ -22,7 +22,7 @@ fn main() {
     //runtime becaz size does not know while compile time.
     // incase of arrays we have to fix these type of error other program will not be compiled.
     // -> compile time error..array size known at compile time.
-    //let tenty = &v3[20];
+    // let tenty = &v3[20];
 
     //cannot borrow `v3` as mutable because it is also borrowed as immutable -> line 17
     //mutable borrow occurs here
@@ -34,7 +34,7 @@ fn main() {
      * to the new memory locations. When this happens, the variable above 'third' might be
      * pointing to some other location. So....
      */
-    //v3.push(7); -> UNCOMMENT THIS TO CHECK ERROR
+    //v3.push(7); //-> UNCOMMENT THIS TO CHECK ERROR
     println!("third : {}", third);
 
     //if we want our program to run even if there is no element or want to handle
@@ -68,7 +68,7 @@ fn main() {
     let mut v9 = vec![1, 2, 3, 4, 5];
     let first = &v[0];
     v9.push(6);
-    println!("The first element is: {}", first); // at this line first might be moved to new memory location
+    println!("The first element is: {}", first); // at this line 'first' might be moved to new memory location
 
     //vectors only store one type of data, what if we want vec to store diff types of data ?
     // solution -> store enums inside vec
@@ -167,7 +167,7 @@ fn main() {
     fruits.insert(String::from("apple"), 10);
     fruits.insert(String::from("apple"), 20); //overrides above banana
 
-    //to update if there is not entry
+    //to update if there is no entry
     fruits.entry(String::from("banana")).or_insert(10);
     fruits.entry(String::from("banana")).or_insert(20); // at this line banana is there so, this line will not update banana
 

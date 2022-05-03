@@ -5,7 +5,7 @@ struct User {
     active: bool,
 }
 
-#[derive(Debug)]
+#[derive(Debug)] //helps in printing -> {:?}
 struct Rectangle {
     width: u32,
     height: u32,

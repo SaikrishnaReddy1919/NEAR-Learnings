@@ -1,6 +1,6 @@
 pub mod hosting; // loads hosting.rs file from folder with the same name as current file name(2..check hosting.rs for 3)
 
-
+pub fn check() {}
 
 //------Modules Summary-----
 //Rust lets you split a package into multiple crates and a crate into modules so you can 
